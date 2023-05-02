@@ -1,0 +1,68 @@
+{% load django_bootstrap5 %}
+
+{% bootstrap_css %}
+
+{% bootstrap_javascript %}
+
+{% bootstrap_messages %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="style.css">
+
+
+    <script defer src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script defer scr="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+    <script defer src="script.js"></script>
+
+
+<title>Document</title>
+</head>
+
+
+<body> 
+    {% include 'navbar.html' %}
+       <h3> voici vos resultat pour votre année {{user.student_classes}} :</h3> 
+    <div class="container w-50 pt-5">
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>matiere</th>
+                    <th>note_ds</th>
+                    <th>note_examen</th>
+                    <th>moyenne</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for subject, grades in subject_grades.items %}
+                <tr>
+                  <td>{{ subject }}</td>
+                  <td>{{ grades.note_ds|default:"-" }}</td>
+                  <td>{{ grades.note_ex|default:"-" }}</td>
+                  <td>{{ grades.moyenne|floatformat:2|default:"-" }}</td>
+                </tr>
+                {% endfor %}
+                
+              
+            </tbody>
+            </tfoot>
+        </table>
+        
+        
+    </div>
+  
+
+
+
+
+{% endblock content %}
+</body>
+
+</html>
