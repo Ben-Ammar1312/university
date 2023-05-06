@@ -1,0 +1,62 @@
+{% load django_bootstrap5 %}
+
+{% bootstrap_css %}
+
+{% bootstrap_javascript %}
+
+{% bootstrap_messages %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+    <head>
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+      <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    </head>
+  <body>
+    <style>
+      body {
+      font: 400 1.4rem 'Lato', Verdana, Helvetica, sans-serif;
+      text-align: center;
+      }
+      .btn-change{
+      height: 50px;
+      width: 100px;
+      background: rgba(4, 8, 243, 0.872);
+      margin: 30px;
+      box-shadow: 0 0 1px #090909;
+      -webkit-transition: all 0.5s ease-in-out;
+      border: 1px;
+      color: #fff;
+      }
+      .btn-change:hover{
+      -webkit-transform: scale(1.4);
+      background: #050505;
+      }
+    </style>
+    
+    <div class="container"> 
+      <div class="row">
+            <h2><u>TEK-UP CLASSES</u></h2>
+          <title>tek-up classes</title>
+          <button class="btn-change btn-lg">CPI-1</button>
+          <button class="btn-change btn-lg">CPI-2</button>
+          <button class="btn-change btn-lg">TIC-A</button>
+          <button class="btn-change btn-lg">TIC-B</button>
+          <button class="btn-change btn-lg">TIC-C</button>
+          <button class="btn-change btn-lg">TIC-D</button>
+          <button class="btn-change btn-lg">TIC-E</button>
+          <button class="btn-change btn-lg">TIC-F</button>
+          <button class="btn-change btn-lg">TIC-G</button>
+          <button class="btn-change btn-lg">TIC-K</button>
+          <button class="btn-change btn-lg">GLSI</button>
+          <button class="btn-change btn-lg">SSIR</button>
+          <button class="btn-change btn-lg">DSEN</button>
+          <button class="btn-change btn-lg">DMWM</button>
+      </div>
+    </div>
+  </body>
+  {% endblock content %}
+
+</html>
