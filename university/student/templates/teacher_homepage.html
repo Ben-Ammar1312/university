@@ -5,6 +5,7 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     {% load django_bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
+    <title>Teacher</title>
   </head>
   <body>
     {% include 'teacher_navbar.html' %} {% bootstrap_messages %} {% block content %}
@@ -27,6 +28,7 @@
       body {
         font: 400 1.4rem "Lato", Verdana, Helvetica, sans-serif;
         text-align: center;
+        background-image: url(tt.jpg);
       }
       .btn-change.disabled,
       .btn-change[disabled] {

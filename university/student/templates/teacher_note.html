@@ -11,20 +11,33 @@
   <body>
     {% include 'teacher_navbar.html' %}
 
-    <h1>{{ classe }} {{ subject }}</h1>
+    <h3>{{ classe }} {{ subject }}</h3>
     <form method="post" action="{% url 'teacher_note' classe=classe subject=subject %}">
       {% csrf_token %}
+      <style>
+      table,th, td {
+        border:2px solid black;
+        text-align: center;
+      }
+      th{
+        color: blue;
+      }
+      h3{
+        text-align: center;
+      }
 
-      <table>
+      </style>
+    
+      <table style="width: 70%;" >
         <thead>
           <tr>
             <th>Nom et prenom</th>
-            <th>Note ds</th>
+            <th>Note devoir surveillé</th>
             <th>Note examen</th>
           </tr>
         </thead>
         <tbody>
-          {% for student in students %}
+          {% for student in students %} 
           <tr>
             <td>{{ student.student_profile.username }}</td>
             {% with student_grades=notes|get_item:student.student_profile.username %}

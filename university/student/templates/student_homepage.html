@@ -23,21 +23,31 @@
     <script defer src="script.js"></script>
 
 
-<title>Document</title>
+<title>Student</title>
 </head>
+<style>
+    h3{
+        color: black;
+        text-align: center;
+    }
+    th{
+        color: blue;
+        text-align: center;
+    }
+</style>
 
 
 <body> 
     {% include 'navbar.html' %}
-       <h3> voici vos resultat pour votre année {{user.student_classes}} :</h3> 
+       <h3> Voici vos resultats pour votre année {{user.student_classes}} : </h3> 
     <div class="container w-50 pt-5">
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
-                    <th>matiere</th>
-                    <th>note_ds</th>
-                    <th>note_examen</th>
-                    <th>moyenne</th>
+                    <th>Matiere</th>
+                    <th>Note_devoir_surveillé</th>
+                    <th>Note_examen</th>
+                    <th>Moyenne</th>
                 </tr>
             </thead>
             <tbody>

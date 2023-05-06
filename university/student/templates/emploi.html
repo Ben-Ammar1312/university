@@ -41,7 +41,7 @@
         <iframe class="pdf-iframe" src="{% static '/'|add:timetable_file %}" frameborder="0"> </iframe>
       </div>
       {% else %}
-      <p>No timetable found for your class.</p>
+      <p style="color: red;">No timetable found for your class!</p>
       {% endif %}
     </div>
   </body>
