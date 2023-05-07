@@ -6,7 +6,7 @@ import os
 
 def get_timetable_file(class_name):
     timetable_path = 'timetables'  # Change this line
-    timetable_files = os.listdir(os.path.join(settings.BASE_DIR, 'student', 'static', timetable_path))  # Change this line
+    timetable_files = os.listdir(os.path.join(settings.BASE_DIR, 'student', 'static', timetable_path))  
 
     for file in timetable_files:
         if class_name in file:
@@ -58,7 +58,8 @@ def teacher_home(request):
     query_set = Teacher.objects.filter(profile=request.user).first()
     teacher_classes = query_set.teacher_class.all().values_list(
         'libelle', flat=True)
-    return render(request, 'teacher_homepage.html', {'cla': teacher_classes, 'classes': ['CPI-1', 'CPI-2', 'TIC-A', 'TIC-B', 'TIC-C', 'TIC-D', 'TIC-E', 'TIC-F', 'TIC-G', 'TIC-K', 'GLSI', 'SSIR', 'DSEN', 'DMWM']})
+    query_set2 = Classes.objects.all().values_list('libelle',flat=True)
+    return render(request, 'teacher_homepage.html', {'cla': teacher_classes, 'classes': query_set2})
 
 
 @login_required
