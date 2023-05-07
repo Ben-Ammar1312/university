@@ -1,40 +1,111 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'style.css' %}" />
+<style>
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+}
+.navbar {
+  
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation">
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.navbar {
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  font-size: 16px;
+  height: 80px;
+}
+
+.navbar-toggler {
+  display: none;
+}
+.nav-button-container {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-toggler-icon {
+  width: 24px;
+  height: 24px;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.navbar-nav {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+}
+
+.nav-item {
+  margin-right: 20px; /* Add margin between nav-items */
+}
+
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: var(--secondary-color);
+}
+
+.navbar-text {
+  color: #ffffff;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 8px 16px;
+}
+
+.btn-secondary:hover {
+  background-color: #1abc9c;
+}
+</style>
+<nav class="navbar">
+  <div class="container">
+    <button class="navbar-toggler" type="button">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <u><i><a class="nav-link" href="#" onclick="history.back()" style="color: blue;">Back</a></i></u>
-        </li>
-        <li class="nav-item">
-          <u><i><a class="nav-link" href="{% url 'student_resultat' %}" style="color: blue;">Resultat</a></i></u>
-        </li>
-        <li class="nav-item">
-          <u><i><a class="nav-link" href="{% url 'student_emploi' %}" style="color: blue;">Emploi</a></i></u>
-        </li>
-      </ul>
-      <b><span class="navbar-text mx-auto" style="color: black;"> Bienvenue {{ user }} </span></b>
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <form class="form-inline" action="{% url 'logout' %}" method="post">
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{% url 'home' %}" />
-            <button class="btn btn-outline-danger" type="submit" style="color: blue;">Logout</button>
-          </form>
-        </li>
-      </ul>
+    <div class="navbar-content">
+      <div class="nav-button-container">
+        <a class="nav-link" href="#" onclick="history.back()">Back</a>
+        <a class="nav-link" href="{% url 'student_resultat' %}">Resultat</a>
+        <a class="nav-link" href="{% url 'student_emploi' %}">Emploi</a>
+      </div>
+      <span class="navbar-text"> Bienvenue {{ user }} </span>
+      <form class="form-inline" action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{% url 'home' %}" />
+        <button class="btn btn-secondary" type="submit">Logout</button>
+      </form>
     </div>
   </div>
 </nav>

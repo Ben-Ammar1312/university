@@ -20,14 +20,24 @@
         display: inline-block;
         margin: 5px;
       }
+      h2 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: #333;
+  padding-top: 50px;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 60px;
+  text-shadow: 2px 2px #f4f4f4;
+}
 
       .btn-change {
         display: block;
-        width: 100%;
-      }
-      body {
-        font: 400 1.4rem "Lato", Verdana, Helvetica, sans-serif;
-        text-align: center;
+        width: 180px;
+        height: 80px;
+        padding: 10px;
+        font-size: 14px;
       }
       .btn-change.disabled,
       .btn-change[disabled] {
@@ -36,23 +46,29 @@
         cursor: not-allowed;
       }
       .btn-change {
-        height: 50px;
-        width: 100px;
-        background: rgba(4, 8, 243, 0.872);
-        margin: 30px;
+        background: var(--primary-color);
+        margin: 10px;
         box-shadow: 0 0 1px #090909;
         -webkit-transition: all 0.5s ease-in-out;
-        border: 1px;
+        border: 1px solid var(--primary-color);
         color: #fff;
       }
       .btn-change:hover {
-        -webkit-transform: scale(1.4);
-        background: #050505;
+        -webkit-transform: scale(1.2);
+        background: var(--secondary-color);
+        border: 1px solid var(--secondary-color);
+      }
+      .btn-change:hover,
+      .btn-change:focus,
+      .btn-change:active,
+      .btn-change.active {
+        outline: none;
+        text-decoration: none;
       }
     </style>
     <div class="container">
       <div class="row">
-        <h2><u>{{classe}} SUBJECTS</u></h2>
+        <h2>{{classe}} SUBJECTS</h2>
         {% for subject in all %}
         <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 btn-container">
           {% if subject in subs %}

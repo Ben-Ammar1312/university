@@ -1,34 +1,123 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'style.css' %}" />
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <u><i><a class="nav-link" href="#" onclick="history.back()" style="color: blue;">Back</a></i></u>
-        </li>
-      </ul>
-      <b><span class="navbar-text mx-auto" style="color: black;"> Bienvenue {{ user }} </span></b>
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http_equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Home</title>
+
+    <style>
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.navbar {
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  font-size: 16px;
+  height: 80px;
+}
+
+.navbar-toggler {
+  display: none;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.navbar-nav {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin-right: 20px; /* Add margin between nav-items */
+}
+
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: var(--secondary-color);
+}
+
+.navbar-text {
+  color: #ffffff;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 8px 16px;
+}
+
+.btn-secondary:hover {
+  background-color: #1abc9c;
+}
+
+.nav-button-container {
+  display: flex;
+  align-items: center;
+}
+
+.nav-button-container .nav-link {
+  margin-right: 20px;
+}
+
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <button class="navbar-toggler" type="button">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-content">
+          <div class="nav-button-container">
+            <a class="nav-link" href="#" onclick="history.back()">Back</a>
+          </div>
+          <span class="navbar-text"> Bienvenue {{ user }} </span>
           <form class="form-inline" action="{% url 'logout' %}" method="post">
             {% csrf_token %}
             <input type="hidden" name="next" value="{% url 'home' %}" />
-            <button class="btn btn-outline-danger" type="submit" style="color: blue;">Logout</button>
+            <button class="btn btn-secondary" type="submit">Logout</button>
           </form>
-        </li>
-      </ul> 
-    </div>
-  </div>
-</nav>
+        </div>
+      </div>
+    </nav>
+    
+  </body>
+</html>

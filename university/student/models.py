@@ -1,6 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
-from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 
 
@@ -26,7 +24,7 @@ class Classes(models.Model):
 
 class Student(models.Model):
     student_profile = models.OneToOneField(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='+')
+        User, on_delete=models.CASCADE, related_name='+')
     student_classes = models.ForeignKey(Classes, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -50,7 +48,7 @@ class Student_Subject (models.Model):
 
 class Teacher(models.Model):
     profile = models.OneToOneField(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='+')
+        User, on_delete=models.CASCADE, related_name='+')
     teacher_subject = models.ManyToManyField(Subject)
     teacher_class = models.ManyToManyField(Classes)
 
